@@ -20,6 +20,8 @@
 
     {{ .Hugo.Generator }}
 
+    {{ range $data := .Site.Params.metaTags }}<meta {{ range $key, $value := $data }} {{ $key | safeHTMLAttr }}="{{ $value | safeHTMLAttr }}" {{ end }} /> {{ end }}
+
     {{ "<!-- Stylesheets -->" | safeHTML }}
     <link rel="stylesheet" type="text/css" href="{{ "built/screen.css" | absURL}}" /> 
     <link rel="stylesheet" type="text/css" href="{{ "css/casper-two.css" | absURL}}" /> 
