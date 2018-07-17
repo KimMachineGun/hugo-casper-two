@@ -20,6 +20,8 @@
 
     {{ .Hugo.Generator }}
 
+    {{ if .Keywords }}<meta name="keywords" content="{{ delimit .Keywords ", " }}">{{ end }}
+
     {{ range $data := .Site.Params.metaTags }}<meta {{ range $key, $value := $data }} {{ $key | safeHTMLAttr }}="{{ $value | safeHTMLAttr }}" {{ end }} /> {{ end }}
 
     {{ "<!-- Stylesheets -->" | safeHTML }}
