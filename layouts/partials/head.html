@@ -24,12 +24,15 @@
 
     {{ range $data := .Site.Params.metaTags }}<meta {{ range $key, $value := $data }} {{ $key | safeHTMLAttr }}="{{ $value | safeHTMLAttr }}" {{ end }} /> {{ end }}
 
+    {{ if .Site.Params.highlightjs }}
+    {{ "<!-- highlight.js-->" | safeHTML }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/{{ .Site.Params.highlightjsstyle | default "default" }}.min.css">
+    {{ end }}
+
     {{ "<!-- Stylesheets -->" | safeHTML }}
     <link rel="stylesheet" type="text/css" href="{{ "built/screen.css" | absURL}}" /> 
     <link rel="stylesheet" type="text/css" href="{{ "css/casper-two.css" | absURL}}" /> 
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" />
     {{ range .Site.Params.customCSS }} <link rel="stylesheet" href="{{ . | absURL }}" /> {{ end }}
-
+    
     {{ if .Site.Params.RSSLink}}<link href="{{.Site.Params.RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" /> {{else}}{{ if eq .URL "/" }}<link href="{{ "index.xml" | absURL}}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" /> {{ end }} {{ end }}
-
 </head>
