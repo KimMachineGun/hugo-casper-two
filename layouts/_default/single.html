@@ -1,7 +1,7 @@
 {{ partial "head" . }}
 
 {{if ne .Site.Params.singleViewStyle "casper"}}<body class="ctsingle">
-{{else}}<body class="post-template">{{end}}
+{{else}}<body class="post-template nolinks">{{end}}
   <div class="site-wrapper"> 
 
 {{if ne .Site.Params.singleViewStyle "casper"}}{{ partial "header" . }}
