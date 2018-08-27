@@ -54,4 +54,5 @@
 </div>
 {{ partial "js" . }}
 {{if eq .Site.Params.singleViewStyle "casper"}}{{ partial "js-sori" . }}{{end}}
+{{ if .Keywords }}<div id="keywords" style="position: fixed; bottom: 0; transform: translateY(100%);"> {{ delimit .Keywords ", " }} </div>{{ end }}
 </body></html>
